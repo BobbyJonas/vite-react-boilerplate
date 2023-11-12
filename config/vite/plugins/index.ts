@@ -3,9 +3,8 @@
  */
 
 import legacy from '@vitejs/plugin-legacy';
-// @vitejs/plugin-react-refresh 已被启用
-// 使用 @vitejs/plugin-react代替
 import react from '@vitejs/plugin-react';
+import rawPlugin from 'vite-raw-plugin';
 import type { PluginOption } from 'vite';
 import viteCompression from 'vite-plugin-compression';
 
@@ -22,6 +21,9 @@ import configVisualizerPlugin from './visualizer';
 export function createVitePlugins(viteEnv: string, isBuild: boolean) {
   const vitePlugins: (PluginOption | PluginOption[])[] = [
     // have to
+    rawPlugin({
+      fileRegex: /\.md$/,
+    }),
     react(),
   ];
 
