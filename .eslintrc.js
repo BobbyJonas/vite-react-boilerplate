@@ -21,7 +21,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
-    'plugin:import/recommended',
+    'plugin:import/typescript',
     'eslint-config-prettier',
   ],
   plugins: ['@typescript-eslint', 'prettier'],
@@ -35,7 +35,13 @@ module.exports = {
       version: 'detect',
     },
     'import/resolver': {
-      typescript: {},
+      typescript: {
+        alwaysTryTypes: true,
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
     },
   },
   ignorePatterns: ['**/*.html'],
