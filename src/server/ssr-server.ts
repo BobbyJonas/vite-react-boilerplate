@@ -2,6 +2,7 @@
 import fs from 'node:fs/promises';
 import express from 'express';
 import path from 'path';
+import chalk from 'chalk';
 import cors from 'cors';
 import compression from 'compression';
 import sirv from 'sirv';
@@ -66,7 +67,7 @@ const startServer = async () => {
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
     } catch (e: any) {
       vite?.ssrFixStacktrace(e);
-      console.log(e.stack);
+      console.warn(e.stack);
       res.status(500).end(e.stack);
     }
   });
@@ -74,8 +75,13 @@ const startServer = async () => {
   // Start standalone server if directly running
   if (require.main === module) {
     app.listen(port, () => {
-      // eslint-disable-next-line no-console
-      console.log(`API server listening on port ${port}`);
+      console.log();
+      console.log(
+        `${chalk.bold('Local:')}   ${chalk.cyanBright(
+          'http://localhost:' + chalk.bold(port) + '/'
+        )}`
+      );
+      console.log();
     });
   }
 

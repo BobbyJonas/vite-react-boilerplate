@@ -1,4 +1,5 @@
 import React from 'react';
+import type { Request } from 'express';
 import ReactDOMServer from 'react-dom/server';
 import {
   StaticRouterProvider,
@@ -8,7 +9,7 @@ import {
 
 import routes from './routes';
 
-function createFetchRequest(req: any) {
+function createFetchRequest(req: Request) {
   let origin = `${req.protocol}://${req?.get('host')}`;
   // Note: This had to take originalUrl into account for presumably vite's proxying
   let url = new URL(req.originalUrl || req.url, origin);
@@ -30,11 +31,12 @@ function createFetchRequest(req: any) {
     }
   }
 
-  let init: Record<string, any> = {
+  let init = {
     method: req.method,
     headers,
     signal: controller.signal,
-  };
+    body: undefined,
+  } satisfies import('undici-types').RequestInit;
 
   if (req.method !== 'GET' && req.method !== 'HEAD') {
     init.body = req.body;
