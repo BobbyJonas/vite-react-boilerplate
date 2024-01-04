@@ -81,7 +81,6 @@ const startServer = async () => {
           'http://localhost:' + chalk.bold(port) + '/'
         )}`
       );
-      console.log();
     });
   }
 
