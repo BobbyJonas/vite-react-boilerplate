@@ -4,7 +4,7 @@
 // 因此不需要在最外层提供一个类似redux的Provider包裹层
 import create from 'zustand';
 
-import { login } from '@/api/user';
+import { login } from '@/server/api/user';
 
 // 数据持久化，会缓存到 storage
 // import { persist } from 'zustand/middleware';

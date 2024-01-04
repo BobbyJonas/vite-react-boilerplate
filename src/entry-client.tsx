@@ -8,6 +8,9 @@ import 'antd/dist/antd.less';
 
 const root = createRoot(document.getElementById('root') as Element);
 
+/**
+ * Using createRoot instead of hydrateRoot to prevent hydration mismatches.
+ */
 root.render(
   <StrictMode>
     <BrowserRouter basename="">
