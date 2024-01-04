@@ -13,9 +13,10 @@ const EntryClient = (
     </BrowserRouter>
   </StrictMode>
 );
-const root =
-  process.env.SSR === 'true'
-    ? hydrateRoot(document.getElementById('root') as Element, EntryClient)
-    : createRoot(document.getElementById('root') as Element);
 
-root.render(EntryClient);
+if (process.env.SSR === 'true') {
+  hydrateRoot(document.getElementById('root') as Element, EntryClient);
+} else {
+  const root = createRoot(document.getElementById('root') as Element);
+  root.render(EntryClient);
+}
