@@ -11,7 +11,7 @@ import './styles/normalize.css';
 const App: FC<{}> = () => {
   const elements = useRoutes(routes);
 
-  return elements;
+  return <Suspense fallback={<Spin size="large" />}>{elements}</Suspense>;
 };
 
 export default App;

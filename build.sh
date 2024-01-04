@@ -1,20 +1,28 @@
 #!/bin/bash
 
-ssr="$SSR"
+ENV_SSR="$SSR"
 
 rm -rf dist
 
-echo "执行生产环境打包..."
+LIGHT_GRAY='\033[90m'
+YELLOW='\033[1;33m'
+BLUE='\033[1;34m'
+BG_BLUE='\033[44m'
+NC='\033[0m'
 
-case "$ssr" in
+pnpm i
+
+echo "${YELLOW}bundling...${NC}"
+
+case "$ENV_SSR" in
 "true")
-  echo "SSR: 开启"
+  echo "${BG_BLUE} Server-Side Render ${NC}${BLUE} on ${NC}"
   vite build --ssrManifest --outDir dist/client
   vite build --ssr src/entry-server.tsx --outDir dist/server
   tsc ./src/server/ssr-server --target esnext --module nodenext --outDir ./dist/server
   ;;
 *)
-  echo "SSR: 关闭"
+  echo "${BG_BLUE} Server-Side Render ${NC}${LIGHT_GRAY} off ${NC}"
   vite build
   ;;
 
