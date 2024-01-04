@@ -2,6 +2,7 @@
 import fs from 'node:fs/promises';
 import express from 'express';
 import path from 'path';
+import chalk from 'chalk';
 import cors from 'cors';
 import compression from 'compression';
 import sirv from 'sirv';
@@ -24,7 +25,7 @@ const startServer = async () => {
     : undefined;
 
   // Add Vite or respective production middlewares
-  let vite: any | undefined;
+  let vite: any;
   if (!isProduction) {
     const { createServer } = await import('vite');
     vite = await createServer({
@@ -57,7 +58,7 @@ const startServer = async () => {
         render = (await import(path.join(__dirname, '../../dist/server/entry-server.mjs'))).render;
       }
 
-      const rendered = await render(url, ssrManifest);
+      const rendered = await render(req, res, ssrManifest);
 
       const html = template
         ?.replace(`<!--app-head-->`, rendered.head ?? '')
@@ -66,7 +67,7 @@ const startServer = async () => {
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
     } catch (e: any) {
       vite?.ssrFixStacktrace(e);
-      console.log(e.stack);
+      console.warn(e.stack);
       res.status(500).end(e.stack);
     }
   });
@@ -74,8 +75,12 @@ const startServer = async () => {
   // Start standalone server if directly running
   if (require.main === module) {
     app.listen(port, () => {
-      // eslint-disable-next-line no-console
-      console.log(`API server listening on port ${port}`);
+      console.log();
+      console.log(
+        `${chalk.bold('Local:')}   ${chalk.cyanBright(
+          'http://localhost:' + chalk.bold(port) + '/'
+        )}`
+      );
     });
   }
 

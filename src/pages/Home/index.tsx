@@ -1,6 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 
 const HomePage: FC = () => {
+  useEffect(() => {
+    console.log(1);
+  }, []);
   return (
     <div>
       <h1>HomePage</h1>
