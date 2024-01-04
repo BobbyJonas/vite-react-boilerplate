@@ -1,7 +1,4 @@
-/**
- * 包依赖分析
- * https://github.com/btd/rollup-plugin-visualizer
- */
+import { type Plugin } from 'vite';
 import visualizer from 'rollup-plugin-visualizer';
 
 export default function configVisualizerConfig() {
@@ -10,5 +7,5 @@ export default function configVisualizerConfig() {
     open: true,
     gzipSize: true,
     brotliSize: true,
-  }) as Plugin;
+  }) satisfies Plugin;
 }

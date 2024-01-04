@@ -1,3 +1,7 @@
+/**
+ * @typedef { import('eslint').Linter.Config } LinterConfig
+ * @type {LinterConfig} ESLint 配置
+ */
 module.exports = {
   env: {
     browser: true,
@@ -22,8 +26,8 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    'prettier/prettier': 'warn',
-    'no-unused-vars': 'warn',
+    'prettier/prettier': 1,
+    'no-unused-vars': 1,
     'react/display-name': 0,
   },
   settings: {

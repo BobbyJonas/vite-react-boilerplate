@@ -1,7 +1,3 @@
-/**
- * Proxy
- * 本地反向代理
- */
 import type { ProxyOptions } from 'vite';
 
 import { VITE_PROXY_HTTP } from '../constant';
@@ -12,12 +8,8 @@ type ProxyTargetList = Record<
   ProxyOptions & { rewrite?: (path: string) => string }
 >;
 
-const httpsRE = /^https:\/\//;
+const httpsRegEx = /^https:\/\//;
 
-/**
- * Generate proxy
- * @param list
- */
 export function createProxy() {
   const ProxyList: ProxyTargetList = {
     '/api': {
@@ -25,7 +17,7 @@ export function createProxy() {
       changeOrigin: true,
       rewrite: (pre) => pre.replace(/^\/api/, ''), // 将 /api 重写为空
       // https is require secure=false
-      ...(httpsRE.test(VITE_PROXY_HTTP) ? { secure: false } : {}),
+      ...(httpsRegEx.test(VITE_PROXY_HTTP) ? { secure: false } : {}),
     },
   };
   return ProxyList;

@@ -41,6 +41,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       proxy: createProxy(),
     },
     build: {
+      minify: 'terser',
       terserOptions: {
         compress: {
           keep_infinity: true,
@@ -53,5 +54,5 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       // 设置应用信息
       __APP_INFO__: JSON.stringify(__APP_INFO__),
     },
-  };
+  } satisfies UserConfig;
 };

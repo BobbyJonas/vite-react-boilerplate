@@ -11,7 +11,6 @@ import { createProdMockServer } from 'vite-plugin-mock/es/createProdMockServer';
 /**
  * Used in a production environment. Need to manually import all modules
  */
-import data from './data';
 export function setupProdMockServer() {
-  createProdMockServer([...data]);
+  createProdMockServer([]);
 }

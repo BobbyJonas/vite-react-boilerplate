@@ -4,7 +4,6 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "types": ["vite/client", "node"],
     "allowJs": true,
     "skipLibCheck": false,
     "esModuleInterop": false,
@@ -19,15 +18,16 @@
     "paths": {
       "@/*": ["src/*"],
       "@config/*": ["config/*"]
-    }
+    },
+    "typeRoots": ["node_modules/@types", "typings", "src/**/*.d.ts"]
   },
   "include": [
     "src/**/*",
     "typings/**/*",
     "config/**/*",
+    "mock",
+    "typings",
     "vite.config.ts",
-    ".eslintrc.js",
-    "mock/_createProductionServer.ts"
   ],
-  "exclude": ["node_modules", "build", "dist", "**/*.js"]
+  "exclude": ["node_modules", "build", "dist"]
 }
