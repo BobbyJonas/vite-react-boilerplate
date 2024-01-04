@@ -1,20 +1,21 @@
 import React, { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 
 import 'antd/dist/antd.less';
 
-const root = createRoot(document.getElementById('root') as Element);
-
-/**
- * Using createRoot instead of hydrateRoot to prevent hydration mismatches.
- */
-root.render(
+const EntryClient = (
   <StrictMode>
-    <BrowserRouter basename="">
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </StrictMode>
 );
+const root =
+  process.env.SSR === 'true'
+    ? hydrateRoot(document.getElementById('root') as Element, EntryClient)
+    : createRoot(document.getElementById('root') as Element);
+
+root.render(EntryClient);

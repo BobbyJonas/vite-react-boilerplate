@@ -24,7 +24,7 @@ const startServer = async () => {
     : undefined;
 
   // Add Vite or respective production middlewares
-  let vite: any | undefined;
+  let vite: any;
   if (!isProduction) {
     const { createServer } = await import('vite');
     vite = await createServer({
@@ -57,7 +57,7 @@ const startServer = async () => {
         render = (await import(path.join(__dirname, '../../dist/server/entry-server.mjs'))).render;
       }
 
-      const rendered = await render(url, ssrManifest);
+      const rendered = await render(req, res, ssrManifest);
 
       const html = template
         ?.replace(`<!--app-head-->`, rendered.head ?? '')
