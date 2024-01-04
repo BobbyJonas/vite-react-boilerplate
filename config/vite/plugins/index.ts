@@ -7,7 +7,7 @@ import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
 import rawPlugin from 'vite-raw-plugin';
 import { ViteEjsPlugin } from 'vite-plugin-ejs';
-import viteCompression from 'vite-plugin-compression';
+import viteCompression from 'vite-plugin-compression2';
 
 import {
   VITE_APP_TITLE,
@@ -51,7 +51,13 @@ export function createVitePlugins(viteEnv: string, isBuild: boolean) {
   if (isBuild) {
     // rollup-plugin-gzip
     VITE_APP_COMPRESS_GZIP &&
-      vitePlugins.push(viteCompression({ deleteOriginFile: VITE_APP_COMPRESS_GZIP_DELETE_FILE }));
+      vitePlugins.push(
+        viteCompression({
+          algorithm: 'brotliCompress',
+          exclude: [/\.(br)$/, /\.(gz)$/],
+          deleteOriginalAssets: VITE_APP_COMPRESS_GZIP_DELETE_FILE,
+        })
+      );
   }
 
   return vitePlugins;

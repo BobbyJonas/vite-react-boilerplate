@@ -1,3 +1,7 @@
+/**
+ * @typedef { import('@commitlint/types').UserConfig } UserConfig
+ * @type {UserConfig} StyleLint 配置
+ */
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
