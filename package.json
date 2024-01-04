@@ -56,8 +56,9 @@
     "zustand": "^4.4.6"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.2.0",
-    "@commitlint/config-conventional": "^18.1.0",
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@commitlint/types": "^18.4.3",
     "@types/lodash": "^4.14.201",
     "@types/node": "^20.9.0",
     "@types/qs": "^6.9.10",
