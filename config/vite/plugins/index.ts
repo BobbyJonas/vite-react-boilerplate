@@ -2,13 +2,15 @@
  * vite plugin
  */
 
+import type { PluginOption } from 'vite';
 import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
 import rawPlugin from 'vite-raw-plugin';
-import type { PluginOption } from 'vite';
+import { ViteEjsPlugin } from 'vite-plugin-ejs';
 import viteCompression from 'vite-plugin-compression';
 
 import {
+  VITE_APP_TITLE,
   VITE_APP_ANALYZE,
   VITE_APP_COMPRESS_GZIP,
   VITE_APP_COMPRESS_GZIP_DELETE_FILE,
@@ -27,19 +29,22 @@ export function createVitePlugins(viteEnv: string, isBuild: boolean) {
     react(),
   ];
 
+  vitePlugins.push(
+    ViteEjsPlugin({
+      title: VITE_APP_TITLE,
+    })
+  );
+
   // @vitejs/plugin-legacy
   VITE_APP_LEGACY && isBuild && vitePlugins.push(legacy());
 
   // vite-plugin-mock
   VITE_APP_MOCK && vitePlugins.push(configMockPlugin(isBuild));
 
-  // vite-plugin-style-import
-  // vitePlugins.push(configStyleImportPlugin(isBuild));
-
   // rollup-plugin-visualizer
   VITE_APP_ANALYZE && vitePlugins.push(configVisualizerPlugin());
 
-  //vite-plugin-theme
+  // vite-plugin-theme
   // vitePlugins.push(configThemePlugin(isBuild));
 
   // The following plugins only work in the production environment

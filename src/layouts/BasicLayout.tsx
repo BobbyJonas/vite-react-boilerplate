@@ -7,9 +7,9 @@ const BasicLayout: FC<{}> = () => {
   const navigate = useNavigate();
 
   return (
-    <Layout>
-      <Outlet />
-    </Layout>
+    // <Layout>
+    <Outlet />
+    // </Layout>
   );
 };
 

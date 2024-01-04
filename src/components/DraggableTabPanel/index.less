@@ -1,0 +1,55 @@
+.App,
+.ant-layout {
+  background: none;
+}
+
+@draggable-tab-panel-height: 40px;
+
+.draggable-tab-panel-wrapper {
+  height: @draggable-tab-panel-height;
+
+  .draggable-tab-panel {
+    position: relative;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 100%;
+    border: 1px solid #edeff5;
+    user-select: none;
+    -webkit-user-drag: none;
+
+    &:not(&--show-scrollbar) {
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .tab-panel-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 0 8px;
+      border-right: 1px solid #edeff5;
+      background-color: #f5f7fa;
+      color: #95999e;
+      cursor: pointer;
+
+      &--active {
+        background-color: white;
+        color: #1f2329;
+      }
+    }
+
+    &-placeholder {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(black, 0.2);
+    }
+  }
+}

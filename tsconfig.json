@@ -25,10 +25,9 @@
     "src/**/*",
     "typings/**/*",
     "config/**/*",
+    "mock",
     "typings",
     "vite.config.ts",
-    ".eslintrc.js",
-    "mock/_createProductionServer.ts"
   ],
-  "exclude": ["node_modules", "build", "dist", "**/*.js"]
+  "exclude": ["node_modules", "build", "dist"]
 }
