@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Request } from 'express';
+import { Helmet } from 'react-helmet';
 import ReactDOMServer from 'react-dom/server';
 import {
   StaticRouterProvider,
@@ -62,5 +63,7 @@ export const render = async (req: Request) => {
       <StaticRouterProvider router={router} context={context}></StaticRouterProvider>
     </React.StrictMode>
   );
-  return { html };
+  const helmet = Helmet.renderStatic();
+  const head = helmet.link.toString() + helmet.title.toString() + helmet.meta.toString();
+  return { html, head };
 };
