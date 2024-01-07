@@ -1,6 +1,6 @@
 import path from 'path';
 import type { ConfigEnv, UserConfig } from 'vite';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import { PORT, VITE_BASE_PATH, VITE_DROP_CONSOLE } from './config/constant';
 import { themeVariables } from './config/theme';
@@ -11,7 +11,7 @@ import packageJson from './package.json';
 const { dependencies, devDependencies, name, version } = packageJson;
 const __APP_INFO__ = {
   pkg: { dependencies, devDependencies, name, version },
-  lastBuildTime: moment().format('YYYY-MM-DD HH:mm:ss'),
+  lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
 };
 
 // 函数式配置

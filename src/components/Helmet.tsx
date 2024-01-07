@@ -4,10 +4,12 @@ import { Helmet as ReactHelmet, type HelmetProps } from 'react-helmet';
 
 type IHelmetProps = HelmetProps;
 
-export const Helmet: FC<Readonly<IHelmetProps>> = (props): ReactNode => {
+export const HelmetServerTagData = 'data-from-server';
+
+export const Helmet: FC<Readonly<IHelmetProps>> = (props) => {
   useEffect(() => {
     if (!import.meta.env.SSR) {
-      document.head.querySelectorAll('[data-react-helmet="true"]')?.forEach((el) => el.remove());
+      document.head.querySelectorAll(`[${HelmetServerTagData}]`)?.forEach((el) => el.remove());
     }
   }, []);
 

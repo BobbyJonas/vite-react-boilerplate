@@ -5,7 +5,6 @@
 import type { PluginOption } from 'vite';
 import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
-import rawPlugin from 'vite-raw-plugin';
 import { ViteEjsPlugin } from 'vite-plugin-ejs';
 import viteCompression from 'vite-plugin-compression2';
 
@@ -21,12 +20,7 @@ import configMockPlugin from './mock';
 import configVisualizerPlugin from './visualizer';
 
 export function createVitePlugins(viteEnv: string, isBuild: boolean) {
-  const vitePlugins: (PluginOption | PluginOption[])[] = [
-    rawPlugin({
-      fileRegex: /\.md$/,
-    }),
-    react(),
-  ];
+  const vitePlugins: (PluginOption | PluginOption[])[] = [react()];
 
   vitePlugins.push(
     ViteEjsPlugin({

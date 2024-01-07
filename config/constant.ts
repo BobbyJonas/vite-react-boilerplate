@@ -15,6 +15,6 @@ export const VITE_APP_COMPRESS_GZIP: boolean = false;
 // 开启Gzip压缩，删除原文件
 export const VITE_APP_COMPRESS_GZIP_DELETE_FILE: boolean = false;
 // 去除 console
-export const VITE_DROP_CONSOLE: boolean = true;
+export const VITE_DROP_CONSOLE: boolean = false;
 // 开启兼容
 export const VITE_APP_LEGACY: boolean = true;

@@ -8,6 +8,7 @@ import {
   createStaticRouter,
 } from 'react-router-dom/server';
 
+import { HelmetServerTagData } from './components/Helmet';
 import routes from './routes';
 
 function createFetchRequest(req: Request) {
@@ -64,6 +65,11 @@ export const render = async (req: Request) => {
     </React.StrictMode>
   );
   const helmet = Helmet.renderStatic();
-  const head = helmet.link.toString() + helmet.title.toString() + helmet.meta.toString();
+
+  const replaceReactHelmetData = (str: string) =>
+    str.replaceAll(/ data-react-helmet="true"/g, ` ${HelmetServerTagData}`);
+  const head = replaceReactHelmetData(
+    helmet.link.toString() + helmet.title.toString() + helmet.meta.toString() || ''
+  );
   return { html, head };
 };
