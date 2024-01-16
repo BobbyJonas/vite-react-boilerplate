@@ -26,9 +26,15 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    'prettier/prettier': 1,
     'no-unused-vars': 1,
+    'prettier/prettier': 1,
     'react/display-name': 0,
+    '@typescript-eslint/consistent-type-imports': [
+      1,
+      {
+        fixStyle: 'inline-type-imports',
+      },
+    ],
   },
   settings: {
     react: {

@@ -1,4 +1,4 @@
-import React, { FC, Suspense } from 'react';
+import React, { type FC, Suspense } from 'react';
 import { useRoutes } from 'react-router-dom';
 
 import { Spin } from 'antd';

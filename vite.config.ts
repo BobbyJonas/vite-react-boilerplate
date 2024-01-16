@@ -13,7 +13,6 @@ const __APP_INFO__ = {
   lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
 };
 
-// 函数式配置
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   const isBuild = command === 'build';
 
