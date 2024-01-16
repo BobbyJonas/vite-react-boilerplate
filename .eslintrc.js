@@ -33,6 +33,7 @@ module.exports = {
       1,
       {
         fixStyle: 'inline-type-imports',
+        disallowTypeAnnotations: false,
       },
     ],
   },

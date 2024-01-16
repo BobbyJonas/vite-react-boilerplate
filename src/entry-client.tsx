@@ -1,6 +1,9 @@
-import React, { StrictMode } from 'react';
+import React, { StrictMode, Suspense } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+
+import RecoilNexus from 'recoil-nexus';
+import { RecoilRoot } from 'recoil';
 
 import App from './App';
 
@@ -8,9 +11,14 @@ import 'antd/dist/antd.less';
 
 const EntryClient = (
   <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <RecoilRoot>
+      <RecoilNexus />
+      <Suspense>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Suspense>
+    </RecoilRoot>
   </StrictMode>
 );
 

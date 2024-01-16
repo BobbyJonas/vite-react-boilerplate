@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Request } from 'express';
+import type { Request as RequestType } from 'express';
 import { Helmet } from 'react-helmet';
 import ReactDOMServer from 'react-dom/server';
 import {
@@ -11,7 +11,7 @@ import {
 import { HelmetServerTagData } from './components/Helmet';
 import routes from './routes';
 
-function createFetchRequest(req: Request) {
+function createFetchRequest(req: RequestType) {
   let origin = `${req.protocol}://${req?.get('host')}`;
   // Note: This had to take originalUrl into account for presumably vite's proxying
   let url = new URL(req.originalUrl || req.url, origin);
@@ -51,7 +51,7 @@ function createFetchRequest(req: Request) {
  * This code is rendering the root component of the React application.
  * Rendering to string due to this render function being used for server-side rendering.
  */
-export const render = async (req: Request) => {
+export const render = async (req: RequestType) => {
   let { query, dataRoutes } = createStaticHandler(routes);
   let fetchRequest = createFetchRequest(req);
   let context = await query(fetchRequest);
