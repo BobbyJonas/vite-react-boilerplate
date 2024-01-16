@@ -58,6 +58,7 @@
     "sirv": "^2.0.4",
     "vite": "^4.5.1",
     "vite-plugin-ejs": "1.6.4",
+    "vite-tsconfig-paths": "^4.2.3",
     "zustand": "^4.4.6"
   },
   "devDependencies": {

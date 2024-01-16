@@ -1,4 +1,3 @@
-import path from 'path';
 import type { ConfigEnv, UserConfig } from 'vite';
 import dayjs from 'dayjs';
 
@@ -29,12 +28,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         },
       },
     },
-    resolve: {
-      alias: [
-        { find: '@', replacement: path.resolve(__dirname, 'src') },
-        { find: '@config', replacement: path.resolve(__dirname, 'config') },
-      ],
-    },
+    resolve: {},
     server: {
       host: true,
       port: PORT, // 开发环境启动的端口

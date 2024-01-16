@@ -7,6 +7,7 @@ import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
 import { ViteEjsPlugin } from 'vite-plugin-ejs';
 import viteCompression from 'vite-plugin-compression2';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 import {
   VITE_APP_TITLE,
@@ -20,7 +21,7 @@ import configMockPlugin from './mock';
 import configVisualizerPlugin from './visualizer';
 
 export function createVitePlugins(viteEnv: string, isBuild: boolean) {
-  const vitePlugins: (PluginOption | PluginOption[])[] = [react()];
+  const vitePlugins: (PluginOption | PluginOption[])[] = [react(), tsconfigPaths()];
 
   vitePlugins.push(
     ViteEjsPlugin({
