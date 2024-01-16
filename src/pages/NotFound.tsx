@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { type FC } from 'react';
 
-const NotFoundPage: React.FC = () => {
+const NotFoundPage: FC = () => {
   return (
     <div>
       <h2>404</h2>

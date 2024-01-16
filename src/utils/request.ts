@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
+import axios, { type AxiosError, type AxiosInstance, type AxiosResponse } from 'axios';
 import qs from 'qs';
 import _ from 'lodash';
 

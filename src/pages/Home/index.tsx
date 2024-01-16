@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { type FC, useEffect } from 'react';
 import { Helmet } from '@/components/Helmet';
 
 const HomePage: FC = () => {

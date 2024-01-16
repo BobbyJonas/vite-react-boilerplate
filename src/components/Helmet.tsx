@@ -1,10 +1,10 @@
 // 通用的 Helmet 组件 (ssr/nossr)
-import React, { useEffect, type FC, type ReactNode } from 'react';
+import React, { useEffect, type FC } from 'react';
 import { Helmet as ReactHelmet, type HelmetProps } from 'react-helmet';
 
 type IHelmetProps = HelmetProps;
 
-export const HelmetServerTagData = 'data-from-server';
+export const HelmetServerTagData = 'data-static';
 
 export const Helmet: FC<Readonly<IHelmetProps>> = (props) => {
   useEffect(() => {
